@@ -17,19 +17,18 @@ Na komputerze użytkownika powinny być zainstalowane:
 
 > Wszystkie biblioteki Pythona (TensorFlow 1.14, OpenCV, NumPy itp.) są zawarte w obrazie Dockera, więc nie trzeba ich instalować lokalnie.
 
----
 
 ## 2. Sklonowanie repozytorium
 
 
 git clone https://github.com/prgumd/EVPropNet.git
 cd EVPropNet
----
+
 ## 3. Budowa obrazu Dockera
 
 Zbuduj obraz:
 docker build -t evpropnet .
----
+
 ## 4. Pobranie sample data
 
 Wejdź w wiki: Test Code On Sample Data → sekcja Download Sample Data.
@@ -40,14 +39,14 @@ Rozpakuj (przykładowo):
 mkdir -p data/DVSPropTest data/RealData
 unzip DVSPropTest.zip -d data/DVSPropTest
 unzip RealData.zip   -d data/RealData
----
+
 ## 5. Pobranie modelu (checkpoint):
 W wiki w sekcji Download the model pobierz model (Float). Umieść pliki modelu w katalogu, np.:
 CheckPoints/SingleStyleProp/
     49model.ckpt.data-00000-of-00001
     49model.ckpt.index
     49model.ckpt.meta
----    
+   
 ## 6. Uruchomienie konteneru Dockera:
 Z katalogu głównego repo:
 docker run --rm -it \
@@ -57,7 +56,7 @@ docker run --rm -it \
   evpropnet bash
 
 (Jeśli nie używasz GPU, usuń --gpus all.)
----
+
 ## 7. Test na pojedynczym obrazie (Single, TestMode=S)
 mkdir -p /workspace/Outputs
 Uruchom:
@@ -67,7 +66,7 @@ python3 /workspace/Code/Test.py \
   --TestMode=S \
   --Input=/workspace/data/DVSPropTest/Imgs/000000.png
 (000000 to nazwa pliku,; jeżeli chcemy inny plik to musimy podać jego nazwe)
----
+
 ## 8. Test na wielu obrazach (Multiple, TestMode=M)
 python3 /workspace/Code/Test.py \
   --CheckPointPath=/workspace/CheckPoints/SingleStyleProp/49model.ckpt \
@@ -75,7 +74,6 @@ python3 /workspace/Code/Test.py \
   --TestMode=M \
   --Input=/workspace/data/DVSPropTest/Imgs/ \
   --ImgFormat=png
----
+
 ## 9. Sprawdzenie wyników
 Pliki wyjściowe znajdują się w Outputs
-```bash
