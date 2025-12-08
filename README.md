@@ -21,7 +21,7 @@ Na komputerze użytkownika powinny być zainstalowane:
 
 ## 2. Sklonowanie repozytorium
 
-```bash
+
 git clone https://github.com/prgumd/EVPropNet.git
 cd EVPropNet
 ---
@@ -78,3 +78,4 @@ python3 /workspace/Code/Test.py \
 ---
 ## 9. Sprawdzenie wyników
 Pliki wyjściowe znajdują się w Outputs
+```bash
